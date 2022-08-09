@@ -1,0 +1,17 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html {
+   scroll-behavior: smooth;
+}
+
+body {
+   /* font-weight: 400; */
+   overflow-x: hidden;
+   position: relative;
+   /* color: #fafafa !important; */
+   /* font-family: 'Centra', sans-serif !important; */
+}
