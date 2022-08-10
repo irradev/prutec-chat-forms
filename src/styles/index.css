@@ -16,3 +16,7 @@ body {
    /* color: #fafafa !important; */
    /* font-family: 'Centra', sans-serif !important; */
 }
+
+fieldset {
+   border: none;
+}
