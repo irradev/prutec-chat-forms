@@ -50,10 +50,11 @@ const RequiredMark = styled.img`
 `;
 
 const ErrorFieldContainer = styled.div<ErrorFieldContainerProps>`
-   height: ${(props) => (props.isError ? '15px' : '0px')};
-   transition: all 0.4s ease-out;
    margin-bottom: ${(props) => (props.isError ? '24px' : '0px')};
    padding: 5px 0px;
+   height: ${(props) => (props.isError ? '15px' : '0px')};
+   opacity: ${(props) => (props.isError ? '1' : '0')};
+   transition: all 0.4s ease-out;
 `;
 
 const Legend = styled.legend`
