@@ -10,6 +10,10 @@ interface ErrorFieldContainerProps {
    isError: boolean;
 }
 
+interface SubmitButtonProps {
+   isDisabled: boolean;
+}
+
 const Container = styled.div<ErrorFieldContainerProps>`
    margin: 10px 0px;
    position: relative;
@@ -80,27 +84,43 @@ const SubmitBtnContainer = styled.div`
    width: 100%;
 `;
 
-const SubmitBtn = styled.button`
+const SubmitBtn = styled.button<SubmitButtonProps>`
    color: #fff;
    background-color: #bc69aa;
    font-size: 16px;
    font-weight: bold;
    letter-spacing: 0.5px;
-   border: 1px solid #af42ae;
+   border-style: solid;
+   border-width: 1px;
    border-radius: 4px;
    padding: 12px 18px;
-   transition: all 0.15s ease-out;
-   cursor: pointer;
-   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 
-   &:hover {
-      background-color: #af42ae;
-      transform: scale(1.1);
-   }
-   &:active {
-      background-color: #723c67;
-      transform: scale(1);
-   }
+   transition: all 0.15s ease-out;
+
+   ${(props) =>
+      props.isDisabled
+         ? `
+
+            border-color: #C585B3;
+
+            &:disabled {
+               background-color: #D0A3BF;
+            }
+            `
+         : `
+            cursor: pointer;
+            border-color: #af42ae;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+
+            &:hover {
+               background-color: #af42ae;
+               transform: scale(1.1);
+            }
+            &:active {
+               background-color: #723c67;
+               transform: scale(1);
+            }
+         `}
 `;
 
 interface InputFormsProps {
@@ -125,10 +145,12 @@ export const InputForm = ({
    );
 };
 
-export const SubmitButton = () => {
+export const SubmitButton = ({ isDisabled }: SubmitButtonProps) => {
    return (
       <SubmitBtnContainer>
-         <SubmitBtn type="submit">Enviar</SubmitBtn>
+         <SubmitBtn type="submit" isDisabled={isDisabled} disabled={isDisabled}>
+            Enviar
+         </SubmitBtn>
       </SubmitBtnContainer>
    );
 };
