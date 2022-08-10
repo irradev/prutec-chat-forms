@@ -34,12 +34,17 @@ const MessageContainer = styled.div<StyleMessageProps>`
 
 interface ChatMessageProps {
    type: MessageType;
+   className?: string;
    children: ReactElement;
 }
 
-export const ChatMessage = ({ type, children }: ChatMessageProps) => {
+export const ChatMessage = ({
+   type,
+   className = '',
+   children,
+}: ChatMessageProps) => {
    return (
-      <Container type={type}>
+      <Container type={type} className={className}>
          {type === 'IA' && <IAImage />}
          <MessageContainer type={type}>{children}</MessageContainer>
       </Container>

@@ -1,0 +1,66 @@
+.loader-writing {
+   display: inline-block;
+   position: relative;
+   width: 80px;
+   height: 50px;
+}
+
+.loader-writing div {
+   position: absolute;
+   top: 15px;
+   width: 13px;
+   height: 13px;
+   border-radius: 50%;
+   background: #AF42AE;
+   animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.loader-writing div:nth-child(1) {
+   left: 8px;
+   animation: loader-writing1 0.6s infinite;
+}
+
+.loader-writing div:nth-child(2) {
+   left: 8px;
+   animation: loader-writing2 0.6s infinite;
+}
+
+.loader-writing div:nth-child(3) {
+   left: 32px;
+   animation: loader-writing2 0.6s infinite;
+}
+
+.loader-writing div:nth-child(4) {
+   left: 56px;
+   animation: loader-writing3 0.6s infinite;
+}
+
+@keyframes loader-writing1 {
+   0% {
+      transform: scale(0);
+   }
+
+   100% {
+      transform: scale(1);
+   }
+}
+
+@keyframes loader-writing3 {
+   0% {
+      transform: scale(1);
+   }
+
+   100% {
+      transform: scale(0);
+   }
+}
+
+@keyframes loader-writing2 {
+   0% {
+      transform: translate(0, 0);
+   }
+
+   100% {
+      transform: translate(24px, 0);
+   }
+}

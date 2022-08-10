@@ -7,7 +7,7 @@ export const IADialogsData: Dialog[] = [
       type: 'IA',
    },
    {
-      text: '¿Cuál es tu nombre?',
+      text: '',
       component: 'NameForm',
       type: 'IA',
    },

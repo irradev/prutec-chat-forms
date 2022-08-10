@@ -1,9 +1,9 @@
-import React from 'react';
-
 export const NameForm = () => {
    return (
-      <div>
-         <h2>NameForm</h2>
-      </div>
+      <>
+         <h3>¿Cuál es tu nombre?</h3>
+         <form></form>
+         <h3>Send</h3>
+      </>
    );
 };
