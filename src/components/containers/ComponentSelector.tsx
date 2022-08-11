@@ -6,6 +6,7 @@ import { NameForm } from '../forms/NameForm';
 
 import { LineBreak } from '../../interfaces';
 import { ActionChatButtons } from './ActionChatButtons';
+import { UserDataBlock } from './UserDataBlock';
 
 const Container = styled.div`
    padding: 10px;
@@ -45,6 +46,8 @@ export const ComponentSelector = ({
             <ContactForm onSubmitForm={onSubmitForm} />
          ) : componentName === 'ActionChatButtons' ? (
             <ActionChatButtons onDone={onDone} onReload={onReload} />
+         ) : componentName === 'UserDataBlock' ? (
+            <UserDataBlock />
          ) : null}
       </Container>
    );

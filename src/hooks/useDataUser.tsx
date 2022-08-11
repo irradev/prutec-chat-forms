@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loadUser, saveUser } from '../api/userApi';
+import { loadUser, saveUser, removeUser } from '../api/userApi';
 import { LineBreak } from '../interfaces';
 
 export const useDataUser = () => {
@@ -29,7 +29,12 @@ export const useDataUser = () => {
       }
    };
 
-   const saverUserApi = () => {
+   const resetUserData = () => {
+      setUserData([]);
+      removeUser();
+   };
+
+   const saveUserApi = () => {
       const userObject: { [key: string]: any } = {};
 
       for (const user of userData) {
@@ -51,8 +56,10 @@ export const useDataUser = () => {
 
    return {
       userData,
+      setUserData,
       updateDataUser,
-      saverUserApi,
+      resetUserData,
+      saveUserApi,
       loadUserApi,
    };
 };

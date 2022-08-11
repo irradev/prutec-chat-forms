@@ -12,8 +12,8 @@ const Container = styled.div`
       flex-direction: column-reverse;
    }
 
-   background-color: #bc69aa;
-   color: #fff;
+   background-color: #730b73;
+   color: #ffc8ea;
    border-radius: 10px;
    margin-bottom: 50px;
    padding: 10px;
@@ -43,7 +43,8 @@ const RightContainer = styled.div`
 
 const ClipboardImgContainer = styled.img`
    width: 100%;
-   filter: invert(1);
+   filter: invert(79%) sepia(14%) saturate(728%) hue-rotate(284deg)
+      brightness(105%) contrast(102%);
 `;
 
 const DescriptionContainer = styled.div`
@@ -56,7 +57,8 @@ const DescriptionContainer = styled.div`
 
 const TimeSvgContainer = styled.img`
    width: 25px;
-   filter: invert(1);
+   filter: invert(79%) sepia(14%) saturate(728%) hue-rotate(284deg)
+      brightness(105%) contrast(102%);
 `;
 
 const H1 = styled.h1`

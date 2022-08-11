@@ -24,7 +24,7 @@ const Container = styled.div<ErrorFieldContainerProps>`
       color: #990021;
       border-color: ${(props) => (props.isError ? '#bb0000' : '#af42ae')};
       border-style: solid;
-      border-with: 1px;
+      border-width: 1px;
 
       border-radius: 5px;
       font-size: 16px;
@@ -35,7 +35,7 @@ const Container = styled.div<ErrorFieldContainerProps>`
 
    & > input::placeholder {
       /*color: #e11d48;*/
-      color: #ff3553;
+      color: #e90b2c;
       opacity: 1;
    }
 
@@ -86,7 +86,7 @@ const SubmitBtnContainer = styled.div`
 
 const SubmitBtn = styled.button<SubmitButtonProps>`
    color: #fff;
-   background-color: #bc69aa;
+   background-color: #af42ae;
    font-size: 16px;
    font-weight: bold;
    letter-spacing: 0.5px;
@@ -94,6 +94,7 @@ const SubmitBtn = styled.button<SubmitButtonProps>`
    border-width: 1px;
    border-radius: 4px;
    padding: 12px 18px;
+   outline: none;
 
    transition: all 0.15s ease-out;
 
@@ -109,16 +110,19 @@ const SubmitBtn = styled.button<SubmitButtonProps>`
             `
          : `
             cursor: pointer;
-            border-color: #af42ae;
+            border-color: #730b73;
             text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 
             &:hover {
-               background-color: #af42ae;
                transform: scale(1.1);
             }
             &:active {
-               background-color: #723c67;
+               background-color: #730b73;
                transform: scale(1);
+            }
+            &:focus {
+               border-color: #ff3553;
+               border-width: 2px;
             }
          `}
 `;

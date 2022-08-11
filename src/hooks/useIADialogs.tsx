@@ -16,7 +16,18 @@ export const useIADialogs = (dialogs: Dialog[] = []) => {
       }, seconds * 1000);
    };
 
+   // ? actualizo a -1 para que "siempre" haga el renderizado y el useEffect esuche el cambio
+   const resetIaDialogs = () => {
+      setIaDialogIndex(-1);
+      setActiveIaDialog(null);
+   };
+
    useEffect(() => {
+      if (iaDialogIndex < 0) {
+         setIaDialogIndex(1);
+         return;
+      }
+
       let seconds = 2;
       setIsIaWriting(true);
 
@@ -36,5 +47,6 @@ export const useIADialogs = (dialogs: Dialog[] = []) => {
       iaDialogIndex,
       setNextDialog,
       isIaWriting,
+      resetIaDialogs,
    };
 };

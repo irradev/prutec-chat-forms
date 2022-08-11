@@ -2,12 +2,25 @@ import { useEffect, useState } from 'react';
 import { useDataUser, useIADialogs } from './';
 import { IADialogsData } from '../data/iaDialogs';
 import { ChatDialog, LineBreak } from '../interfaces';
+import { dataToLineBreaks } from '../utils/dataToLineBreaks';
 
 export const useStartScreen = () => {
-   const { activeIaDialog, iaDialogIndex, setNextDialog, isIaWriting } =
-      useIADialogs(IADialogsData);
-   const { userData, updateDataUser, saverUserApi, loadUserApi } =
-      useDataUser();
+   const {
+      activeIaDialog,
+      iaDialogIndex,
+      setNextDialog,
+      isIaWriting,
+      resetIaDialogs,
+   } = useIADialogs(IADialogsData);
+
+   const {
+      userData,
+      setUserData,
+      updateDataUser,
+      resetUserData,
+      saveUserApi,
+      loadUserApi,
+   } = useDataUser();
 
    const [chatDialogs, setChatDialogs] = useState<ChatDialog[]>([]);
 
@@ -30,7 +43,7 @@ export const useStartScreen = () => {
    };
 
    const onDone = () => {
-      saverUserApi();
+      saveUserApi();
       addChatDialogs([
          {
             text: null,
@@ -41,10 +54,9 @@ export const useStartScreen = () => {
    };
 
    const onReload = () => {
-      // const userObject: {} = loadUserApi();
-   };
-   const onLoad = () => {
-      console.log(loadUserApi());
+      setChatDialogs([chatDialogs[0]]);
+      resetUserData();
+      resetIaDialogs();
    };
 
    useEffect(() => {
@@ -64,6 +76,27 @@ export const useStartScreen = () => {
                   type: 'UI',
                },
             ];
+         }
+
+         if (iaDialogIndex === 1) {
+            const loadUser = loadUserApi();
+            if (loadUser) {
+               let dataWithLineBreaks = dataToLineBreaks(loadUser);
+               setUserData(dataWithLineBreaks);
+               newChatDialog = [
+                  {
+                     text: 'Se encontraron datos previamente guardados ¿Qué deseas hacer?',
+                     component: null,
+                     lineBreaks: dataWithLineBreaks,
+                     type: 'IA',
+                  },
+                  {
+                     text: '',
+                     component: 'ActionChatButtons',
+                     type: 'UI',
+                  },
+               ];
+            }
          }
 
          addChatDialogs(newChatDialog);
