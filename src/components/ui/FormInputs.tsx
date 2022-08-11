@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import styled from 'styled-components';
 import { FieldError } from 'react-hook-form';
 
-import { ErrorField } from '../blocks/ErrorField';
+import { ErrorField } from '../containers/ErrorField';
 
 import svgAsterisk from '../../assets/asterisk.svg';
 

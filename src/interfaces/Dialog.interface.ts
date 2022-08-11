@@ -1,8 +1,7 @@
-export type MessageType = 'IA' | 'User';
+export type MessageType = 'IA' | 'User' | 'UI';
 
 export interface Dialog {
-   text: string;
-   // Component: ((props: any) => ReactElement )| null,
+   text: string | null;
    component: string | null;
    type: MessageType;
 }

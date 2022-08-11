@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { ErrorField } from '../blocks/ErrorField';
+import { LineBreak } from '../../interfaces';
 import { InputForm, SubmitButton, TitleForm } from '../ui/FormInputs';
 
 interface FormInputs {
@@ -9,15 +10,28 @@ interface FormInputs {
    maternalSurname: string;
 }
 
-export const NameForm = () => {
+interface NameFormProps {
+   onSubmitForm: (prop: LineBreak[]) => void;
+}
+
+export const NameForm = ({ onSubmitForm }: NameFormProps) => {
    const {
       register,
       handleSubmit,
-      watch,
       formState: { errors },
    } = useForm<FormInputs>();
 
-   const onSubmit: SubmitHandler<FormInputs> = (data) => console.log(data);
+   const [isSubmitted, setIsSubmitted] = useState(false);
+   const onSubmit: SubmitHandler<FormInputs> = (data) => {
+      let text = '';
+      text += data.firstName;
+      if (data.secondName.length > 0) text += ' ' + data.secondName;
+      text += ` ${data.paternalSurname} ${data.maternalSurname}`;
+
+      let toSend = [{ nameText: '', text }];
+      onSubmitForm(toSend);
+      setIsSubmitted(true);
+   };
 
    return (
       <>
@@ -57,17 +71,17 @@ export const NameForm = () => {
                      placeholder="Apellido Paterno"
                   />
                </InputForm>
-               <InputForm errorField={errors.maternalSurname} required>
+               <InputForm errorField={errors.maternalSurname}>
                   <input
                      {...register('maternalSurname', {
-                        required: true,
                         minLength: 2,
                         maxLength: 30,
                      })}
                      placeholder="Apellido Materno"
                   />
                </InputForm>
-               <SubmitButton />
+
+               <SubmitButton isDisabled={isSubmitted} />
             </fieldset>
          </form>
       </>

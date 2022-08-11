@@ -7,18 +7,23 @@ export const IADialogsData: Dialog[] = [
       type: 'IA',
    },
    {
-      text: '',
+      text: null,
       component: 'NameForm',
       type: 'IA',
    },
    {
-      text: '¿Cuál es tu fecha de nacimiento?',
+      text: null,
       component: 'BirthdateForm',
       type: 'IA',
    },
    {
-      text: 'Proporcioname tus datos de contacto',
+      text: null,
       component: 'ContactForm',
+      type: 'IA',
+   },
+   {
+      text: 'verificando_datos',
+      component: null,
       type: 'IA',
    },
 ];

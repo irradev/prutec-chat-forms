@@ -15,6 +15,7 @@ export const useIADialogs = (dialogs: Dialog[] = []) => {
          clearInterval(delayToNext);
       }, seconds * 1000);
    };
+
    useEffect(() => {
       let seconds = 2;
       setIsIaWriting(true);

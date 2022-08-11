@@ -11,25 +11,47 @@ interface StyleMessageProps {
 
 const Container = styled.div<StyleMessageProps>`
    display: flex;
-   justify-content: ${(props) => (props.type === 'IA' ? 'start' : 'end')};
+   justify-content: ${(props) =>
+      props.type === 'IA' ? 'start' : props.type === 'User' ? 'end' : 'center'};
    align-items: center;
    gap: 10px;
 
-   margin-bottom: 15px;
+   margin-bottom: 25px;
 `;
 
 const MessageContainer = styled.div<StyleMessageProps>`
-   background-color: ${(props) =>
-      props.type === 'IA' ? '#D6BBC0' : '#BC69AA'};
-   color: ${(props) => (props.type === 'IA' ? '#000' : '#fff')};
-   font-weight: medium;
    border-radius: 10px;
    padding: 10px;
-   max-width: 300px;
+   max-width: 95%;
 
-   box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.8);
-   -webkit-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.8);
-   -moz-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.8);
+   ${(props) =>
+      props.type === 'IA' &&
+      `
+         background-color: #D6BBC0;
+         color: #000;
+      `}
+
+   ${(props) =>
+      props.type === 'User' &&
+      `
+         background-color: #AF42AE;
+         color: #fff;
+      `}
+   
+   ${(props) =>
+      props.type === 'UI' &&
+      `
+      background-color: transparent;
+      width: 100%;
+   `}
+
+   ${(props) =>
+      props.type !== 'UI' &&
+      `
+      box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.8);
+      -webkit-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.8);
+      -moz-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.8);
+   `}
 `;
 
 interface ChatMessageProps {
